@@ -25,15 +25,14 @@
 //	GET_NEXT_LINE.C	//
 char	*get_next_line(int fd);
 void	ft_read_line(int fd, char **storage, char **tmp);
-char	*get_before_newline(char *s);
-char	*get_after_newline(char *s);
+char	*get_before_newline(const char *s);
+char	*get_after_newline(const char *s);
 char	*ft_parse_line(char **storage, char **tmp);
 
 //	GET_NEXT_LINE_UTILS.C	//
-int		ft_found_newline(char *s);
-char	*ft_strjoin(char *s1, char *s2);
-char	*ft_strdup(char *s);
-int		ft_strlen(char *s);
+int		ft_found_newline(const char *s);
+char	*ft_strjoin(const char *s1, const char *s2);
+char	*ft_strdup(const char *s);
 void	ft_free(char **s1, char **s2, char **s3);
 void	*ft_calloc(size_t count, size_t size);
 

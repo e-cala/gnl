@@ -12,7 +12,7 @@
 #include "get_next_line.h"
 
 // IMPORTANTE QUE SEA FT_CALLOC (errores con calloc)
-char	*get_before_newline(char *s)
+char	*get_before_newline(const char *s)
 {
 	char	*ptr;
 	int		i;
@@ -41,18 +41,20 @@ char	*get_before_newline(char *s)
 }
 
 // IMPORTANTE QUE SEEA FT_CALLOC o CALLOC
-char	*get_after_newline(char *s)
+char	*get_after_newline(const char *s)
 {
 	char	*ptr;
 	int		i;
 	int		j;
 
 	i = 0;
-	j = ft_strlen(s);
+	j = 0;
 	while (s[i] != '\0' && s[i] != '\n')
 		i++;
 	if (s[i] != '\0' && s[i] == '\n')
 		i++;
+	while (s[j])
+		j++;
 	ptr = ft_calloc((j - i) + 1, sizeof * ptr);
 	if (!ptr)
 		return (NULL);

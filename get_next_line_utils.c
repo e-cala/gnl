@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-int	ft_found_newline(char *s)
+int	ft_found_newline(const char *s)
 {
 	int		i;
 
@@ -26,7 +26,7 @@ int	ft_found_newline(char *s)
 	return (0);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin(const char *s1, const char *s2)
 {
 	char	*ptr;
 	int		i;
@@ -34,7 +34,13 @@ char	*ft_strjoin(char *s1, char *s2)
 
 	if (!s1 && !s2)
 		return (NULL);
-	ptr = calloc(ft_strlen(s1) + ft_strlen(s2) + 1, sizeof * ptr);
+	i = 0;
+	j = 0;
+	while (s1 && s1[i])
+		i++;
+	while (s2 && s2[j])
+		j++;
+	ptr = calloc(i + j + 1, sizeof * ptr);
 	if (!ptr)
 		return (NULL);
 	i = 0;
@@ -46,18 +52,20 @@ char	*ft_strjoin(char *s1, char *s2)
 	j = 0;
 	while (s2[j])
 		ptr[i++] = s2[j++];
-	ptr[i] = '\0';
 	return (ptr);
 }
 
-char	*ft_strdup(char	*s)
+char	*ft_strdup(const char *s)
 {
 	char	*ptr;
 	int		i;
 
 	if (!s)
 		return (ft_strdup(""));
-	ptr = calloc(ft_strlen(s) + 1, sizeof * ptr);
+	i = 0;
+	while (s[i])
+		i++;
+	ptr = calloc(i + 1, sizeof * ptr);
 	if (!ptr)
 		return (NULL);
 	i = 0;
@@ -68,16 +76,6 @@ char	*ft_strdup(char	*s)
 	}
 	ptr[i] = '\0';
 	return (ptr);
-}
-
-int	ft_strlen(char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
 }
 
 void	ft_free(char **s1, char **s2, char **s3)
